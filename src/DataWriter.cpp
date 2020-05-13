@@ -5,10 +5,10 @@ using std::cout;
 using std::endl;
 DataWriter::DataWriter() {}
 
-void DataWriter::writeOneRow(vector<Field> fields, vector<std::string> row,
-                             uint16_t startPosition, std::ofstream dataFile,
+void DataWriter::writeOneRow(vector<Field> fields, vector<string> row,
+                             uint16_t startPosition, ofstream &dataFile,
                              int32_t pageNumber, uint16_t entryNumber,
-                             std::ofstream indexFile) {
+                             ofstream &indexFile) {
   uint16_t n = row.size();
   dataFile.seekp(startPosition);
   for (int i = 0; i < n; i++) {

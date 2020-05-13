@@ -10,18 +10,25 @@ struct Header {
 class Page {
 public:
   ofstream &stream;
-  int32_t startPos;
+  int pageNumber;
+  uint16_t numOfEntry;
+  uint16_t endOfFreeSpace;
   static const int32_t pageSize = 65536;
+  vector<Header> headers;
 
-  Page(ofstream &stream, int32_t pageNumber);
+  Page(ofstream &stream, int32_t pageNumber, vector<Header> headers,
+       uint16_t numOfEntry, uint16_t endOfFreeSpace);
 
-  void WriteAt(int32_t offset, const std::vector<char> &bytes);
+  void WriteOneRowAt(vector<Field> fields, vector<string> row,
+                     ofstream &indexFile);
 
   uint16_t GetNumberOfEntries();
 
-  void AddEntry(uint16_t location, uint16_t size);
+  uint16_t GetEndOfFreeSpace();
 
-  Header ReadEntryInfo(int index);
+  int GetPageNumber();
+
+  void AddEntry(uint16_t location, uint16_t size);
 };
 
 #endif // PAGE_H
