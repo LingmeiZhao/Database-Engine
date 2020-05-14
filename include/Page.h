@@ -28,7 +28,13 @@ public:
 
   int GetPageNumber();
 
+  bool canWrite(int rowLength);
+
+  bool isFull();
+
   void AddEntry(uint16_t location, uint16_t size);
+
+  void writeHeader();
 };
 
 #endif // PAGE_H

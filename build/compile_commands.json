@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/main.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/main.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/main.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/BPlusTree.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/BPlusTree.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/BPlusTree.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/DataReader.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/DataReader.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/DataReader.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/DataWriter.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/DataWriter.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/DataWriter.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/Field.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Field.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Field.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/Page.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Page.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Page.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/PageReader.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/PageReader.cpp"
+}
+]

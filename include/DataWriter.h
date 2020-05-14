@@ -13,9 +13,9 @@ class DataWriter {
 public:
   DataWriter();
   static void writeOneRow(vector<Field> fields, vector<string> row,
-                          uint16_t startPosition, ofstream &dataFile,
-                          int32_t pageNumber, uint16_t entryNumber,
-                          ofstream &indexFile);
+                             uint16_t startPosition, ofstream &dataFile,
+                             int32_t pageNumber, uint16_t entryNumber,
+                             ofstream &indexFile);
 };
 
 #endif // DATAWRITER_H

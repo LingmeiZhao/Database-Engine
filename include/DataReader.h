@@ -13,7 +13,7 @@ using std::vector;
 class DataReader {
 public:
   DataReader();
-  static void readOneRow(vector<Field> fields, uint16_t startPosition,
+  static vector<string> readOneRow(vector<Field> fields, uint16_t startPosition,
                          ifstream &dataFile);
 };
 

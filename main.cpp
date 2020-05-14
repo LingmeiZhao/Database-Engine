@@ -4,15 +4,11 @@
 #include <iostream>
 #include <string.h>
 #include <vector>
+#include "Page.h"
+#include "PageReader.h"
 using namespace std;
 
 using ByteArray = std::vector<char>;
-
-struct Field {
-  std::string name;
-  std::string dataType;
-  bool isPrimaryKey;
-};
 
 void creatTable(std::vector<Field> fields, string tableName) {
   ofstream wf(tableName, ios::out | ios ::binary);
@@ -151,7 +147,7 @@ void testWriteOneRow() {
 }
 
 void testReadOneRow() {
-  ifstream dataFile("data.dat", ios::out | ios::binary);
+  ifstream dataFile("data.dat", ios::in | ios::binary);
   std::vector<Field> fields = {{"ID", "INTEGER", true},
                                {"Name", "TEXT", false}};
 
@@ -164,7 +160,33 @@ void getRow(std::vector<Field> fields, int pkIndex, std::string pkValue) {}
 
 int main() {
 
-  testWriteOneRow();
-  testReadOneRow();
+  ofstream dataFile("dataTest.dat", ios::out | ios::binary);
+  vector<Header> headers = {};
+  int32_t pageNumber = 0;
+  uint16_t numOfEntry = 0;
+  uint16_t endOfFreeSpace = 65535;
+  Page page(dataFile, pageNumber, headers, numOfEntry, endOfFreeSpace);
+  std::vector<Field> fields = {{"ID", "INTEGER", true},
+                               {"Name", "TEXT", false}};
+  std::vector<std::string> row = {"98", "Nancy"};
+  ofstream indexFile("indexTest.dat", ios::out | ios::binary);
+  page.WriteOneRowAt(fields, row, indexFile);
+  cout << "End of free space: " <<page.GetEndOfFreeSpace() << endl;
+  cout << "Number of entry: " << page.GetNumberOfEntries() << endl;
+  row = {"1282", "Julia"};
+  page.WriteOneRowAt(fields, row, indexFile);
+  cout << "End of free space: " <<page.GetEndOfFreeSpace() << endl;
+  cout << "Number of entry: " << page.GetNumberOfEntries() << endl;
+  dataFile.close();
+  ifstream readFile("dataTest.dat", ios::in | ios::binary);
+  PageReader pageReader(readFile);
+  headers = pageReader.readHeaders(pageNumber, 65535);
+  int n = headers.size();
+  cout << "Read number of entry: " << pageReader.readNumOfEntry(pageNumber, 65535) << endl;
+  cout << "Read end of free space: " << pageReader.readEndOfFreeSpace(pageNumber, 65535) << endl;
+  for(int i = 0 ; i < n; i++){
+    cout << "Location: " << headers[i].location << "  " << "Size: " << headers[i].size << endl;
+  }
+  readFile.close();
   return 0;
 }
