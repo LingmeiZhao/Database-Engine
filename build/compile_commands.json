@@ -33,5 +33,10 @@
   "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
   "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/PageReader.cpp",
   "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/PageReader.cpp"
+},
+{
+  "directory": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/build",
+  "command": "/usr/bin/c++   -I/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/include  -g   -std=gnu++11 -o CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o -c /home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Table.cpp",
+  "file": "/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Table.cpp"
 }
 ]

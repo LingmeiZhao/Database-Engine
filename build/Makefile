@@ -329,6 +329,33 @@ src/PageReader.cpp.s:
 	$(MAKE) -f CMakeFiles/DatabaseEngine.dir/build.make CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.s
 .PHONY : src/PageReader.cpp.s
 
+src/Table.o: src/Table.cpp.o
+
+.PHONY : src/Table.o
+
+# target to build an object file
+src/Table.cpp.o:
+	$(MAKE) -f CMakeFiles/DatabaseEngine.dir/build.make CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o
+.PHONY : src/Table.cpp.o
+
+src/Table.i: src/Table.cpp.i
+
+.PHONY : src/Table.i
+
+# target to preprocess a source file
+src/Table.cpp.i:
+	$(MAKE) -f CMakeFiles/DatabaseEngine.dir/build.make CMakeFiles/DatabaseEngine.dir/src/Table.cpp.i
+.PHONY : src/Table.cpp.i
+
+src/Table.s: src/Table.cpp.s
+
+.PHONY : src/Table.s
+
+# target to generate assembly for a file
+src/Table.cpp.s:
+	$(MAKE) -f CMakeFiles/DatabaseEngine.dir/build.make CMakeFiles/DatabaseEngine.dir/src/Table.cpp.s
+.PHONY : src/Table.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -359,6 +386,9 @@ help:
 	@echo "... src/PageReader.o"
 	@echo "... src/PageReader.i"
 	@echo "... src/PageReader.s"
+	@echo "... src/Table.o"
+	@echo "... src/Table.i"
+	@echo "... src/Table.s"
 .PHONY : help
 
 

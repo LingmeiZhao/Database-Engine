@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/DatabaseEngine.dir/src/Field.cpp.o"
   "CMakeFiles/DatabaseEngine.dir/src/Page.cpp.o"
   "CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.o"
+  "CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o"
   "DatabaseEngine"
   "DatabaseEngine.pdb"
 )

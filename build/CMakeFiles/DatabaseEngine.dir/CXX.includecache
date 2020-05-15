@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../include/DataReader.h
-Field.h
-../include/Field.h
-fstream
--
-iostream
--
-string
--
-vector
--
-
 ../include/DataWriter.h
 Field.h
 ../include/Field.h
@@ -36,21 +24,15 @@ string
 DataWriter.h
 ../include/DataWriter.h
 
-../include/PageReader.h
-DataReader.h
-../include/DataReader.h
+../include/Table.h
 Field.h
 ../include/Field.h
 Page.h
 ../include/Page.h
 fstream
 -
-string
--
-vector
--
 
-/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/PageReader.cpp
-PageReader.h
-/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/PageReader.h
+/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Table.cpp
+Table.h
+/home/zhaolingmei/Documents/MyCode/C++/Database-Engine/src/Table.h
 

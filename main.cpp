@@ -10,82 +10,109 @@ using namespace std;
 
 using ByteArray = std::vector<char>;
 
-void creatTable(std::vector<Field> fields, string tableName) {
+void creatTable(std::vector<Field> fields, string tableName)
+{
   ofstream wf(tableName, ios::out | ios ::binary);
-  if (!wf) {
+  if (!wf)
+  {
     cout << "Can not open table name file" << endl;
     return;
   }
   int n = fields.size();
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; i++)
+  {
     wf.write((char *)&fields[i], sizeof(Field));
   }
-  if (!wf.good()) {
+  if (!wf.good())
+  {
     cout << "Something error happens when writing file" << endl;
   }
   wf.close();
 }
 
 void writeOneRow(std::vector<Field> fields, std::vector<std::string> row,
-                 std::ofstream &dataFile, std::ofstream &indexFile) {
+                 std::ofstream &dataFile, std::ofstream &indexFile)
+{
   int n = row.size();
   uint64_t address = dataFile.tellp();
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; i++)
+  {
     bool isKey = false;
-    if (fields[i].isPrimaryKey == true) {
+    if (fields[i].isPrimaryKey == true)
+    {
       isKey = true;
     }
-    if (fields[i].dataType == "INTEGER") {
+    if (fields[i].dataType == "INTEGER")
+    {
       int64_t value = stol(row[i]);
       dataFile.write((char *)&value, 8);
-    } else if (fields[i].dataType == "REAL") {
+    }
+    else if (fields[i].dataType == "REAL")
+    {
       double_t value = stod(row[i]);
       dataFile.write((char *)&value, 8);
-    } else {
+    }
+    else
+    {
       int size = row[i].size();
       dataFile.put((char)(size / 256));
       dataFile.put((char)(size % 256));
-      for (char c : row[i]) {
+      for (char c : row[i])
+      {
         dataFile.put(c);
       }
     }
-    if (isKey == true) {
-      if (fields[i].dataType == "INTEGER") {
+    if (isKey == true)
+    {
+      if (fields[i].dataType == "INTEGER")
+      {
         int64_t value = stol(row[i]);
         indexFile.write((char *)&value, 8);
-      } else if (fields[i].dataType == "TEXT") {
+      }
+      else if (fields[i].dataType == "TEXT")
+      {
         int size = row[i].size();
         indexFile.put((char)(size / 256));
         indexFile.put((char)(size % 256));
-        for (char c : row[i]) {
+        for (char c : row[i])
+        {
           indexFile.put(c);
         }
       }
       indexFile.write((char *)&address, sizeof(uint64_t));
     }
   }
-  if (!dataFile.good()) {
+  if (!dataFile.good())
+  {
     cout << "Error happens when writing data file!" << endl;
     return;
   }
-  if (!indexFile.good()) {
+  if (!indexFile.good())
+  {
     cout << "Error happens when writing index file!" << endl;
     return;
   }
 }
 
-void readOneDataRow(std::vector<Field> fields, std ::ifstream &dataFile) {
+void readOneDataRow(std::vector<Field> fields, std ::ifstream &dataFile)
+{
   int n = fields.size();
-  for (int i = 0; i < n; i++) {
-    if (fields[i].dataType == "INTEGER") {
+  for (int i = 0; i < n; i++)
+  {
+    if (fields[i].dataType == "INTEGER")
+    {
       long value = 0;
       dataFile.read((char *)&value, 8);
       cout << fields[i].name << ": " << value << endl;
-    } else if (fields[i].dataType == "REAL") {
+    }
+    else if (fields[i].dataType == "REAL")
+    {
       double value = 0.0;
       dataFile.read((char *)&value, 8);
       cout << fields[i].name << ": " << value << endl;
-    } else {
+    }
+    else
+    {
       uint8_t b1;
       uint8_t b2;
       b1 = (uint8_t)dataFile.get();
@@ -94,7 +121,8 @@ void readOneDataRow(std::vector<Field> fields, std ::ifstream &dataFile) {
       std::cout << "size = " << size << std::endl;
       string text;
       text.reserve(size);
-      for (int i = 0; i < size; i++) {
+      for (int i = 0; i < size; i++)
+      {
         text.push_back((char)dataFile.get());
       }
       cout << fields[i].name << ": " << text << endl;
@@ -102,36 +130,43 @@ void readOneDataRow(std::vector<Field> fields, std ::ifstream &dataFile) {
   }
 }
 
-struct Student {
+struct Student
+{
   int ID : 4;
   char name[8];
 };
 
-void readFile() {
+void readFile()
+{
   ifstream rf("student.dat", ios::out | ios::binary);
   rf.seekg(100);
-  if (!rf) {
+  if (!rf)
+  {
     cout << "Can not open file!" << endl;
     return;
   }
   Student rstu[3];
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++)
+  {
     rf.read((char *)&rstu[i], sizeof(Student));
   }
   rf.close();
-  if (!rf.good()) {
+  if (!rf.good())
+  {
     cout << "Error occurred at reading time!" << endl;
     return;
   }
   cout << "Students' Details" << endl;
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++)
+  {
     cout << "ID: " << rstu[i].ID << endl;
     cout << "Name: " << rstu[i].name << endl;
     cout << endl;
   }
 }
 
-void testWriteOneRow() {
+void testWriteOneRow()
+{
   ofstream dataFile("data.dat", ios::out | ios::binary);
   ofstream indexFile("index.dat", ios::out | ios::binary);
   std::vector<Field> fields = {{"ID", "INTEGER", true},
@@ -146,7 +181,8 @@ void testWriteOneRow() {
   indexFile.close();
 }
 
-void testReadOneRow() {
+void testReadOneRow()
+{
   ifstream dataFile("data.dat", ios::in | ios::binary);
   std::vector<Field> fields = {{"ID", "INTEGER", true},
                                {"Name", "TEXT", false}};
@@ -158,7 +194,8 @@ void testReadOneRow() {
 
 void getRow(std::vector<Field> fields, int pkIndex, std::string pkValue) {}
 
-int main() {
+int main()
+{
 
   ofstream dataFile("dataTest.dat", ios::out | ios::binary);
   vector<Header> headers = {};
@@ -171,11 +208,15 @@ int main() {
   std::vector<std::string> row = {"98", "Nancy"};
   ofstream indexFile("indexTest.dat", ios::out | ios::binary);
   page.WriteOneRowAt(fields, row, indexFile);
-  cout << "End of free space: " <<page.GetEndOfFreeSpace() << endl;
+  cout << "End of free space: " << page.GetEndOfFreeSpace() << endl;
   cout << "Number of entry: " << page.GetNumberOfEntries() << endl;
-  row = {"1282", "Julia"};
+  row = {"1282", "John"};
   page.WriteOneRowAt(fields, row, indexFile);
-  cout << "End of free space: " <<page.GetEndOfFreeSpace() << endl;
+  cout << "End of free space: " << page.GetEndOfFreeSpace() << endl;
+  cout << "Number of entry: " << page.GetNumberOfEntries() << endl;
+  row = {"100", "Julia"};
+  page.WriteOneRowAt(fields, row, indexFile);
+  cout << "End of free space: " << page.GetEndOfFreeSpace() << endl;
   cout << "Number of entry: " << page.GetNumberOfEntries() << endl;
   dataFile.close();
   ifstream readFile("dataTest.dat", ios::in | ios::binary);
@@ -184,8 +225,16 @@ int main() {
   int n = headers.size();
   cout << "Read number of entry: " << pageReader.readNumOfEntry(pageNumber, 65535) << endl;
   cout << "Read end of free space: " << pageReader.readEndOfFreeSpace(pageNumber, 65535) << endl;
-  for(int i = 0 ; i < n; i++){
-    cout << "Location: " << headers[i].location << "  " << "Size: " << headers[i].size << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << "Location: " << headers[i].location << "  "
+         << "Size: " << headers[i].size << endl;
+  }
+  Header header = {65491, 15};
+  vector<string> result = pageReader.readRow(header, fields);
+  for (int i = 0; i < result.size(); i++)
+  {
+    cout << result[i] << " " << endl;
   }
   readFile.close();
   return 0;

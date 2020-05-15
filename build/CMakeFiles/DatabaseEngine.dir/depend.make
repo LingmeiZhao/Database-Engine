@@ -34,3 +34,9 @@ CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.o: ../include/Page.h
 CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.o: ../include/PageReader.h
 CMakeFiles/DatabaseEngine.dir/src/PageReader.cpp.o: ../src/PageReader.cpp
 
+CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o: ../include/DataWriter.h
+CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o: ../include/Field.h
+CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o: ../include/Page.h
+CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o: ../include/Table.h
+CMakeFiles/DatabaseEngine.dir/src/Table.cpp.o: ../src/Table.cpp
+

@@ -34,6 +34,10 @@ public:
 
   void AddEntry(uint16_t location, uint16_t size);
 
+  void deleteRow(int entryNum);
+
+  bool isDeleted(int entryNum);
+
   void writeHeader();
 };
 
