@@ -5,21 +5,30 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
-typedef struct BplusTree {
-  int *d;
-  struct BplusTree **child_ptr;
-  bool l;
-  int n;
-} BplusTree_t;
+struct Index {
+  int64_t primaryKey; 
+  int pointer; 
+};
 
-static BplusTree_t *r = NULL;
-static BplusTree_t *np = NULL;
-static BplusTree_t *x = NULL;
+struct Record{
+  int64_t primaryKey;
+  int pos;
+};
 
-BplusTree_t *init();
-void traverse(BplusTree_t *p);
-void sort(int *p, int n);
-int split_child(BplusTree_t *x, int i);
-void insert(int a);
+struct BPlusTreeNode{
+  
+}
+
+class BPlusTree{
+public:
+  BPlusTree();
+  void insert();
+}
+
+
+
+
+
 #endif // BPLUSTREE_H

@@ -3,6 +3,7 @@
 
 using std::cout;
 using std::endl;
+using std::cerr;
 DataWriter::DataWriter() {}
 
 void DataWriter::writeOneRow(vector<Field> fields, vector<string> row,
@@ -47,11 +48,11 @@ void DataWriter::writeOneRow(vector<Field> fields, vector<string> row,
     }
   }
   if (!dataFile.good()) {
-    cout << "Error happens when writing data file!" << endl;
+    cerr << "Error happens when writing data file!" << endl;
     return;
   }
   if (!indexFile.good()) {
-    cout << "Error happens when writing index file!" << endl;
+    cerr << "Error happens when writing index file!" << endl;
     return;
   }
 }

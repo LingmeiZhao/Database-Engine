@@ -6,6 +6,19 @@ Table::Table(vector<Field> fields, ofstream &dataFile, ofstream &indexFile)
     numOfPage = 0;
 }
 
-void Table::addPage(){
-    numOfPage++;
+bool needAddPage(){
+    if(pages.size() == 0 || pages.back().isFull() == true){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void Table::addPage(Page page){
+    if(needAddPage() == true){
+        pages.push_back(page);
+        numOfPage++;
+    }else{
+        return;
+    }
 }

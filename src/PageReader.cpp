@@ -17,8 +17,10 @@ vector<Header> PageReader::readHeaders(int pageNumber, int32_t pageSize) {
     uint16_t size = 0;
     stream.read((char *)&size, sizeof(uint16_t));
     cout << "location in size: " << size << endl;
-    Header header = {location, size};
-    headers.push_back(header);
+    if(location != 0 && size != 0){
+      Header header = {location, size};
+      headers.push_back(header);
+    }
   }
   return headers;
 }
