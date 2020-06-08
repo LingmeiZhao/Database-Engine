@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <list>
 #include "TreeNode.h"
 
 using std::cout;
@@ -37,7 +38,8 @@ public:
     long getPrevPagePointer();
     void setPrevPagePointer(long prev);
     string removeEntryAt(int index, BPlusConfiguration conf);
-    
+    void writeNode(ofstream &r, BPlusConfiguration conf, BPlusTreePerformanceCounter bPerf) override;
+    void printNode() override; 
 };
 
 

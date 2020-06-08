@@ -3,11 +3,14 @@
 #include <iostream>
 #include <stdlib.h>
 #include <list>
+#include <fstream>
 #include "BPlusConfiguration.h"
+#include "BPlusTreePerformanceCounter.h"
 
 using std::cout;
 using std::endl;
 using std::list;
+using std::ofstream;
 
 enum class TreeNodeType{
     TREE_LEAF,
@@ -56,7 +59,7 @@ public:
     long removeLastKey();
     void removeKeyAt(int index);
     int getPageType();
-    //virtual void writeNode(RandomAccessFile r, BPlusConfiguration conf, BPlusTreePerformanceCounter bPerf) = 0;
+    virtual void writeNode(ofstream &r, BPlusConfiguration conf, BPlusTreePerformanceCounter bPerf) = 0;
     virtual void printNode() = 0;
 };
 

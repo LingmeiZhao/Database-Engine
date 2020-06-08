@@ -101,3 +101,57 @@ void TreeLeaf::setPrevPagePointer(long prev){
 string TreeLeaf::removeEntryAt(int index, BPlusConfiguration conf){
     // to do
 }
+
+
+void TreeLeaf::writeNode(ofstream &r, BPlusConfiguration conf, BPlusTreePerformanceCounter bPerf){
+    if(this->isRoot){
+        int position = conf.getHeaderSize() ;
+        r.seekp(position);
+        long value = getPageIndex();
+        r.write((char *) &value, sizeof(long));
+    }
+
+    r.seekp(getPageIndex());
+    int type = getPageType();
+    r.write((char *) &type, sizeof(int));
+
+    r.write((char *) &nextPagePointer, sizeof(long));
+    r.write((char *) &prevPagePointer, sizeof(long));
+    
+    int currentCapacity = getCurrentCapacity();
+    r.write((char *) &currentCapacity, sizeof(int));
+
+    std::list<string>::iterator it = valueList.begin();
+    for(int i = 0; i < getCurrentCapacity(); i++){
+       long key = getKeyAt(i);
+       r.write((char*) &key, sizeof(long));
+       long overflowPointer = getOverflowPointerAt(i);
+       r.write((char* ) &overflowPointer, sizeof(long));
+       string value = *it;
+       r.write((char *) &value, value.size());
+       it++;
+   }
+
+   // annoying correction to do.
+
+   bPerf.incrementTotalLeafNodeWrites();
+}
+
+void TreeLeaf::printNode(){
+     cout << "\nPrinting node of type: " + std::to_string(getNodeType()) + " with index: " + getPageIndex() << endl;
+    cout << "Current node capacity is: " + getCurrentCapacity() << endl;
+    cout << "Next pointer (index): " + getNextPagePointer();
+    cout << "Prev pointer (index): " + getPrevPagePointer << endl;
+    cout << "\nPrinting stored (Key, Value, Ovf) tuples: "<< endl;
+    std::list<long>::iterator key = keyArray.begin();
+    std::list<string>::iterator value = valueList.begin();
+    std::list<long>:: iterator overflow = overflowList.begin();
+    for(int i = 0; i < keyArray.size(); i++){
+        cout << " (" + std::to_string(*key) + ", " + *value + std::to_string(*overflow) + " )" << endl;
+        key++;
+        value++;
+        overflow++;
+    }
+    cout << "\n" << endl;
+
+}
